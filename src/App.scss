@@ -1,0 +1,34 @@
+#root {
+    width: 100%;
+}
+
+.column-header {
+    color: red;
+}
+
+
+main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+input  {
+    position: fixed;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+    width: 200px;
+    margin: 0 auto;
+}
+
+table {
+    margin-top: 60px;
+    width: 100%;
+    text-align: center;
+}
+
+
+td {
+    width: 33%;
+}
