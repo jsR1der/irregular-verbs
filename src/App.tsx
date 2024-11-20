@@ -1,10 +1,22 @@
 import './App.scss'
 import {Verb, verbs, VerbTense} from "./verb.ts";
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 
 function App() {
+
     const [filteredVerbs, setFilteredVerbs] = useState<Verb[]>(verbs)
     const [filterValue, setFilterValue] = useState('')
+
+    const effectCallback = () => {
+        setFilteredVerbs(filterVerbs(filterValue))
+    }
+
+    useEffect(effectCallback, [filterValue])
+
+    const changeFilter = (event: ChangeEvent<HTMLInputElement>) => {
+        setFilterValue(event.target.value)
+    }
+
 
     const filterVerbs = (input: string) => {
         const hasOnlySpaces = input.split('').every(char => /\s/g.test(char));
@@ -15,11 +27,6 @@ function App() {
         return verbs.filter(verb => {
             return verb.base.includes(input)
         })
-    }
-    const changeFilter = (event: ChangeEvent<HTMLInputElement>) => {
-        setFilterValue(event.target.value)
-        setFilteredVerbs(filterVerbs(filterValue))
-
     }
     const columns = Object.keys(VerbTense).filter(key => !(+key))
     return (
