@@ -4,18 +4,25 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "dev:server": "node server/main.js",
+    "prod:server": "pm2",
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc --outDir -b && vite build --outDir server/dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "helmet": "^8.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sass-embedded": "^1.81.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
